@@ -24,7 +24,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
   ];
 
   return (
-    <aside className="w-64 bg-white border-r border-border-dark flex flex-col justify-between shrink-0 h-screen sticky top-0 shadow-sm">
+    <aside className="w-64 bg-white border-r border-border-dark flex flex-col justify-between shrink-0 h-screen sticky top-0 shadow-xs">
       <div>
         {/* Brand Header */}
         <div className="p-5 border-b border-border-dark flex items-center gap-3">
@@ -35,7 +35,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
             <span className="text-base font-bold text-txt-primary font-display tracking-tight block">
               DevInsight <span className="text-primary font-mono font-bold">AI</span>
             </span>
-            <span className="text-[10px] text-txt-muted tracking-wider uppercase block font-mono">
+            <span className="text-[10px] text-txt-muted tracking-wider uppercase block font-mono font-bold">
               Developer Intelligence
             </span>
           </div>
@@ -50,8 +50,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm transition-all ${
                   isActive
-                    ? 'bg-primary text-white font-bold shadow-sm shadow-primary/20'
-                    : 'text-txt-secondary font-semibold hover:text-txt-primary hover:bg-bg-elevated'
+                    ? 'bg-primary text-white font-bold shadow-xs'
+                    : 'text-txt-secondary font-semibold hover:text-txt-primary hover:bg-bg-dark'
                 }`
               }
             >
@@ -65,7 +65,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
       {/* Footer Profile & Status Indicator */}
       <div className="p-4 border-t border-border-dark space-y-3">
         {profile && (
-          <div className="flex items-center gap-3 p-2 rounded-lg bg-bg-elevated border border-border-dark">
+          <div className="flex items-center gap-3 p-2.5 rounded-lg bg-bg-dark border border-border-dark">
             <img
               src={profile.avatarUrl}
               alt={profile.name}
@@ -75,7 +75,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
               <span className="text-xs font-bold text-txt-primary block truncate">
                 {profile.name}
               </span>
-              <span className="text-[11px] text-txt-muted block truncate font-mono">
+              <span className="text-[11px] text-txt-muted block truncate font-mono font-medium">
                 @{profile.username}
               </span>
             </div>
@@ -83,8 +83,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
         )}
 
         {/* API Connection Indicator */}
-        <div className="flex items-center justify-between text-xs text-txt-muted bg-bg-elevated border border-border-dark px-3 py-2 rounded-lg">
-          <span className="flex items-center gap-1.5 font-mono text-[11px]">
+        <div className="flex items-center justify-between text-xs text-txt-secondary bg-bg-dark border border-border-dark px-3 py-2 rounded-lg font-medium">
+          <span className="flex items-center gap-1.5 font-mono text-[11px] text-txt-muted">
             <span className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></span>
             GitHub API
           </span>

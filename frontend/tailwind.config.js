@@ -8,38 +8,38 @@ export default {
     extend: {
       colors: {
         bg: {
-          dark: '#F8FAFC',       // Main page background (Slate 50)
+          dark: '#F6F8FA',       // Main page background (GitHub Light Slate)
           surface: '#FFFFFF',    // Main card / container background (Pure White)
-          elevated: '#F1F5F9',   // Hover state / secondary container (Slate 100)
+          elevated: '#F3F4F6',   // Soft grey panel (Slate 100)
           card: '#FFFFFF',       // Card panels
-          inverse: '#0F172A',    // Dark inverse container when needed
+          inverse: '#1F2328',    // Dark inverse container
         },
         border: {
-          dark: '#E2E8F0',       // Main structural border (Slate 200)
-          subtle: '#CBD5E1',     // Accent border (Slate 300)
-          hover: '#94A3B8',      // Hover border (Slate 400)
+          dark: '#D0D7DE',       // Structural border (Clean Slate)
+          subtle: '#E5E7EB',     // Light divider
+          hover: '#0969DA',      // Active border hover
         },
         primary: {
-          DEFAULT: '#4F46E5',    // Deep Royal Indigo
-          hover: '#4338CA',
-          light: '#6366F1',
-          muted: 'rgba(79, 70, 229, 0.08)',
+          DEFAULT: '#0969DA',    // Classic GitHub / Linear Royal Blue
+          hover: '#0353B4',
+          light: '#218BFF',
+          muted: 'rgba(9, 105, 218, 0.08)',
         },
         secondary: {
-          DEFAULT: '#0284C7',    // Sky Cobalt
-          muted: 'rgba(2, 132, 199, 0.08)',
+          DEFAULT: '#0576B9',    // Deep Cobalt
+          muted: 'rgba(5, 118, 185, 0.08)',
         },
         accent: {
-          success: '#059669',    // Emerald Green
-          warning: '#D97706',    // Warm Amber
-          danger: '#DC2626',     // Crimson Red
-          purple: '#7C3AED',     // Deep Violet
+          success: '#1F883D',    // Deep GitHub Emerald
+          warning: '#9A6700',    // Warm Amber
+          danger: '#CF222E',     // Crimson Red
+          purple: '#8250DF',     // Deep Purple
         },
         txt: {
-          primary: '#0F172A',    // Main text (Slate 900)
-          secondary: '#475569',  // Subtext (Slate 600)
-          muted: '#64748B',      // Muted caption (Slate 500)
-          inverse: '#F8FAFC',    // Text on dark surfaces
+          primary: '#1F2328',    // Main dark text (100% visible)
+          secondary: '#424A53',  // Subtext (100% visible)
+          muted: '#656D76',      // Caption text
+          inverse: '#FFFFFF',    // Text on dark buttons
         },
       },
       fontFamily: {

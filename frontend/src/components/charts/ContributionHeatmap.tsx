@@ -18,11 +18,11 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
   });
 
   const levelColorMap: Record<number, string> = {
-    0: 'bg-[#F1F5F9] border border-[#E2E8F0]',
-    1: 'bg-[#EEF2FF] border border-[#C7D2FE]',
-    2: 'bg-[#A5B4FC] border border-[#818CF8]',
-    3: 'bg-[#6366F1] border border-[#4F46E5]',
-    4: 'bg-[#312E81] border border-[#1E1B4B]',
+    0: 'bg-[#EBEDF0] border border-[#D0D7DE]',
+    1: 'bg-[#9BE9A8] border border-[#40C463]',
+    2: 'bg-[#40C463] border border-[#30A14E]',
+    3: 'bg-[#30A14E] border border-[#216E39]',
+    4: 'bg-[#216E39] border border-[#144622]',
   };
 
   const totalContributions = days.reduce((acc, d) => acc + d.count, 0);
@@ -31,12 +31,12 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
     <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-txt-primary font-display">GitHub Contribution Activity</h3>
-          <p className="text-xs text-txt-muted">
+          <h3 className="text-base font-bold text-[#1F2328] font-display">GitHub Contribution Activity</h3>
+          <p className="text-xs font-medium text-txt-secondary mt-0.5">
             {totalContributions.toLocaleString()} contributions in the last year
           </p>
         </div>
-        <div className="text-xs font-mono text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-md font-bold">
+        <div className="text-xs font-mono text-accent-success bg-accent-success/10 border border-accent-success/20 px-3 py-1 rounded-md font-bold">
           {days.filter((d) => d.count > 0).length} active days
         </div>
       </div>
@@ -59,8 +59,8 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
       </div>
 
       {/* Heatmap Legend */}
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border-dark text-xs text-txt-muted">
-        <span className="font-medium">Observed Activity Calendar</span>
+      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border-dark text-xs text-txt-secondary font-medium">
+        <span>Observed Activity Calendar</span>
         <div className="flex items-center gap-2 font-mono text-[11px]">
           <span>Less</span>
           <div className="flex items-center gap-1">
