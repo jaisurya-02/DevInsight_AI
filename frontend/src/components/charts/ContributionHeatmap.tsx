@@ -6,7 +6,6 @@ interface ContributionHeatmapProps {
 }
 
 export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }) => {
-  // Group days into columns of 7 days (weeks)
   const weeks: HeatmapDay[][] = [];
   let currentWeek: HeatmapDay[] = [];
 
@@ -19,17 +18,17 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
   });
 
   const levelColorMap: Record<number, string> = {
-    0: 'bg-[#161E30] border border-[#243048]',
-    1: 'bg-[#064E3B] border border-[#047857]',
-    2: 'bg-[#047857] border border-[#10B981]',
-    3: 'bg-[#10B981] border border-[#34D399]',
-    4: 'bg-[#34D399] border border-[#A7F3D0]',
+    0: 'bg-[#F1F5F9] border border-[#E2E8F0]',
+    1: 'bg-[#EEF2FF] border border-[#C7D2FE]',
+    2: 'bg-[#A5B4FC] border border-[#818CF8]',
+    3: 'bg-[#6366F1] border border-[#4F46E5]',
+    4: 'bg-[#312E81] border border-[#1E1B4B]',
   };
 
   const totalContributions = days.reduce((acc, d) => acc + d.count, 0);
 
   return (
-    <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
+    <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="text-base font-bold text-txt-primary font-display">GitHub Contribution Activity</h3>
@@ -37,7 +36,7 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
             {totalContributions.toLocaleString()} contributions in the last year
           </p>
         </div>
-        <div className="text-xs font-mono text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-md font-semibold">
+        <div className="text-xs font-mono text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-md font-bold">
           {days.filter((d) => d.count > 0).length} active days
         </div>
       </div>
@@ -61,7 +60,7 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
 
       {/* Heatmap Legend */}
       <div className="flex items-center justify-between mt-4 pt-4 border-t border-border-dark text-xs text-txt-muted">
-        <span>Observed Activity Calendar</span>
+        <span className="font-medium">Observed Activity Calendar</span>
         <div className="flex items-center gap-2 font-mono text-[11px]">
           <span>Less</span>
           <div className="flex items-center gap-1">

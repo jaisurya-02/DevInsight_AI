@@ -26,22 +26,22 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
   const filteredData = getFilteredData();
 
   return (
-    <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
+    <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
           <h3 className="text-base font-bold text-txt-primary font-display">Development Activity Overview</h3>
           <p className="text-xs text-txt-muted">Monthly commits, pull requests, and open-source contributions</p>
         </div>
 
-        <div className="flex items-center gap-1 bg-bg-dark border border-border-dark p-1 rounded-lg self-start sm:self-auto font-mono">
+        <div className="flex items-center gap-1 bg-bg-elevated border border-border-dark p-1 rounded-lg self-start sm:self-auto font-mono">
           {(['3M', '6M', '1Y', 'All'] as const).map((item) => (
             <button
               key={item}
               onClick={() => setFilter(item)}
-              className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
+              className={`px-3 py-1 text-xs font-bold rounded-md transition-colors ${
                 filter === item
-                  ? 'bg-primary text-bg-dark shadow-sm'
-                  : 'text-txt-muted hover:text-txt-primary hover:bg-bg-elevated'
+                  ? 'bg-primary text-white shadow-xs'
+                  : 'text-txt-muted hover:text-txt-primary hover:bg-white'
               }`}
             >
               {item}
@@ -53,13 +53,13 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
       <div className="h-64 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={filteredData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#243048" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
             <XAxis
               dataKey="month"
               stroke="#64748B"
               fontSize={12}
               tickLine={false}
-              axisLine={{ stroke: '#243048' }}
+              axisLine={{ stroke: '#E2E8F0' }}
               fontFamily="JetBrains Mono"
             />
             <YAxis
@@ -71,29 +71,30 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#0F1522',
-                borderColor: '#243048',
+                backgroundColor: '#FFFFFF',
+                borderColor: '#CBD5E1',
                 borderRadius: '8px',
-                color: '#F8FAFC',
+                color: '#0F172A',
                 fontSize: '12px',
                 fontFamily: 'Plus Jakarta Sans',
+                boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
               }}
-              labelStyle={{ color: '#94A3B8', fontWeight: 600 }}
+              labelStyle={{ color: '#475569', fontWeight: 600 }}
             />
             <Area
               type="monotone"
               dataKey="totalActivity"
               name="Total Activity"
-              stroke="#10B981"
+              stroke="#4F46E5"
               strokeWidth={2.5}
-              fill="#10B981"
-              fillOpacity={0.1}
+              fill="#4F46E5"
+              fillOpacity={0.08}
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-border-dark text-xs text-txt-muted">
+      <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-border-dark text-xs text-txt-muted font-medium">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-primary"></span>
           <span>Commits & PRs</span>

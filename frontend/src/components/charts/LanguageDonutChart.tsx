@@ -8,9 +8,9 @@ interface LanguageDonutChartProps {
 
 export const LanguageDonutChart: React.FC<LanguageDonutChartProps> = ({ languages }) => {
   return (
-    <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
+    <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
       <div className="mb-4">
-        <h3 className="text-base font-semibold text-txt-primary">Language Distribution</h3>
+        <h3 className="text-base font-bold text-txt-primary font-display">Language Distribution</h3>
         <p className="text-xs text-txt-muted">Byte breakdown across public repositories</p>
       </div>
 
@@ -27,16 +27,17 @@ export const LanguageDonutChart: React.FC<LanguageDonutChartProps> = ({ language
               dataKey="percentage"
             >
               {languages.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} stroke="#0D1320" strokeWidth={2} />
+                <Cell key={`cell-${index}`} fill={entry.color} stroke="#FFFFFF" strokeWidth={2} />
               ))}
             </Pie>
             <Tooltip
               contentStyle={{
-                backgroundColor: '#0D1320',
-                borderColor: '#1F2937',
+                backgroundColor: '#FFFFFF',
+                borderColor: '#CBD5E1',
                 borderRadius: '8px',
-                color: '#F8FAFC',
+                color: '#0F172A',
                 fontSize: '12px',
+                boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
               }}
               formatter={(value: any) => [`${value}%`, 'Share']}
             />
@@ -45,8 +46,8 @@ export const LanguageDonutChart: React.FC<LanguageDonutChartProps> = ({ language
 
         {/* Center Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <span className="text-xl font-bold text-txt-primary font-mono">{languages.length}</span>
-          <span className="text-[11px] text-txt-muted uppercase tracking-wider">Languages</span>
+          <span className="text-xl font-extrabold text-txt-primary font-mono">{languages.length}</span>
+          <span className="text-[11px] text-txt-muted uppercase tracking-wider font-bold">Languages</span>
         </div>
       </div>
 
@@ -59,9 +60,9 @@ export const LanguageDonutChart: React.FC<LanguageDonutChartProps> = ({ language
                 className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{ backgroundColor: item.color }}
               />
-              <span className="text-txt-secondary truncate">{item.name}</span>
+              <span className="text-txt-secondary font-medium truncate">{item.name}</span>
             </div>
-            <span className="font-mono text-txt-muted font-medium ml-2">{item.percentage}%</span>
+            <span className="font-mono text-txt-primary font-bold ml-2">{item.percentage}%</span>
           </div>
         ))}
       </div>

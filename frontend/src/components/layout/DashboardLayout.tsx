@@ -24,13 +24,13 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       </div>
 
       {/* Mobile Drawer Header */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-bg-surface border-b border-border-dark sticky top-0 z-30">
-        <span className="font-bold text-base text-txt-primary">
-          DevInsight <span className="text-primary">AI</span>
+      <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-border-dark sticky top-0 z-30 shadow-sm">
+        <span className="font-bold text-base text-txt-primary font-display">
+          DevInsight <span className="text-primary font-mono">AI</span>
         </span>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 text-txt-muted hover:text-txt-primary rounded-lg bg-bg-dark border border-border-dark"
+          className="p-2 text-txt-muted hover:text-txt-primary rounded-lg bg-bg-elevated border border-border-dark"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -38,8 +38,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-black/70 flex">
-          <div className="w-64 bg-bg-surface h-full">
+        <div className="md:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-xs flex">
+          <div className="w-64 bg-white h-full shadow-2xl">
             <Sidebar profile={profile} />
           </div>
           <div className="flex-1" onClick={() => setMobileMenuOpen(false)} />
@@ -50,7 +50,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       <main className="flex-1 flex flex-col min-w-0">
         {/* Top Header Banner for Dashboard Views */}
         {profile && (
-          <header className="bg-bg-surface/50 border-b border-border-dark px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <header className="bg-white/80 backdrop-blur-md border-b border-border-dark px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
             <div className="flex items-center gap-3.5">
               <img
                 src={profile.avatarUrl}
@@ -59,34 +59,34 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
               />
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-lg font-bold text-txt-primary">{profile.name}</h1>
+                  <h1 className="text-lg font-bold text-txt-primary font-display">{profile.name}</h1>
                   <span className="text-xs font-mono text-txt-muted">@{profile.username}</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-txt-secondary">
-                  <span className="font-semibold text-primary-light">{profile.predictedRole}</span>
+                <div className="flex items-center gap-2 text-xs text-txt-secondary font-medium">
+                  <span className="font-bold text-primary">{profile.predictedRole}</span>
                   <span className="text-txt-muted">• Analyzed from public GitHub activity</span>
                 </div>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-1.5 text-xs text-txt-muted bg-bg-dark border border-border-dark px-3 py-1.5 rounded-lg">
+              <div className="hidden sm:flex items-center gap-1.5 text-xs font-medium text-txt-secondary bg-bg-elevated border border-border-dark px-3 py-1.5 rounded-lg">
                 <Calendar className="w-3.5 h-3.5 text-primary" />
                 <span>Last analyzed: {profile.lastAnalyzed}</span>
               </div>
 
               <button
                 onClick={onRefresh}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-bg-elevated hover:bg-border-dark border border-border-dark text-txt-primary text-xs font-medium rounded-lg transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-bg-elevated border border-border-dark text-txt-primary text-xs font-semibold rounded-lg transition-colors shadow-xs"
                 title="Refresh Analysis"
               >
-                <RefreshCw className="w-3.5 h-3.5 text-primary-light" />
+                <RefreshCw className="w-3.5 h-3.5 text-primary" />
                 <span>Refresh</span>
               </button>
 
               <button
                 onClick={() => alert('Report link copied to clipboard!')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary-light text-xs font-medium rounded-lg transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 border border-primary/20 text-primary text-xs font-bold rounded-lg transition-colors"
               >
                 <Share2 className="w-3.5 h-3.5" />
                 <span>Share Report</span>

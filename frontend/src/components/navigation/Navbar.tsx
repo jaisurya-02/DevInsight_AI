@@ -6,10 +6,10 @@ export const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="sticky top-0 z-40 bg-bg-dark/90 backdrop-blur-md border-b border-border-dark">
+    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-border-dark shadow-sm">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
             <Cpu className="w-5 h-5" />
           </div>
           <span className="text-lg font-extrabold text-txt-primary tracking-tight font-display">
@@ -17,17 +17,17 @@ export const Navbar: React.FC = () => {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-txt-secondary">
-          <Link to="/analyze" className="hover:text-txt-primary transition-colors">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-txt-secondary">
+          <Link to="/analyze" className="hover:text-primary transition-colors">
             Analyze Profile
           </Link>
-          <Link to="/dashboard" className="hover:text-txt-primary transition-colors">
+          <Link to="/dashboard" className="hover:text-primary transition-colors">
             Demo Dashboard
           </Link>
-          <Link to="/skills" className="hover:text-txt-primary transition-colors">
+          <Link to="/skills" className="hover:text-primary transition-colors">
             Skill Intelligence
           </Link>
-          <Link to="/growth" className="hover:text-txt-primary transition-colors">
+          <Link to="/growth" className="hover:text-primary transition-colors">
             Growth Analytics
           </Link>
         </nav>
@@ -35,7 +35,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center gap-4">
           <button
             onClick={() => navigate('/analyze')}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-bg-dark text-xs font-bold rounded-lg transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-white text-xs font-bold rounded-lg transition-all shadow-sm"
           >
             Analyze Profile <ArrowRight className="w-3.5 h-3.5" />
           </button>

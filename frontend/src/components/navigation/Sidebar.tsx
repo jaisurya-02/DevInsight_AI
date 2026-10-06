@@ -24,11 +24,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
   ];
 
   return (
-    <aside className="w-64 bg-bg-surface border-r border-border-dark flex flex-col justify-between shrink-0 h-screen sticky top-0">
+    <aside className="w-64 bg-white border-r border-border-dark flex flex-col justify-between shrink-0 h-screen sticky top-0 shadow-sm">
       <div>
         {/* Brand Header */}
         <div className="p-5 border-b border-border-dark flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
             <Cpu className="w-5 h-5" />
           </div>
           <div>
@@ -50,8 +50,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm transition-all ${
                   isActive
-                    ? 'bg-primary text-bg-dark font-bold shadow-sm'
-                    : 'text-txt-secondary font-medium hover:text-txt-primary hover:bg-bg-elevated'
+                    ? 'bg-primary text-white font-bold shadow-sm shadow-primary/20'
+                    : 'text-txt-secondary font-semibold hover:text-txt-primary hover:bg-bg-elevated'
                 }`
               }
             >
@@ -65,7 +65,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
       {/* Footer Profile & Status Indicator */}
       <div className="p-4 border-t border-border-dark space-y-3">
         {profile && (
-          <div className="flex items-center gap-3 p-2 rounded-lg bg-bg-dark border border-border-dark">
+          <div className="flex items-center gap-3 p-2 rounded-lg bg-bg-elevated border border-border-dark">
             <img
               src={profile.avatarUrl}
               alt={profile.name}
@@ -83,12 +83,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
         )}
 
         {/* API Connection Indicator */}
-        <div className="flex items-center justify-between text-xs text-txt-muted bg-bg-dark border border-border-dark px-3 py-2 rounded-lg">
+        <div className="flex items-center justify-between text-xs text-txt-muted bg-bg-elevated border border-border-dark px-3 py-2 rounded-lg">
           <span className="flex items-center gap-1.5 font-mono text-[11px]">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></span>
             GitHub API
           </span>
-          <span className="text-[11px] font-mono text-primary font-bold">Connected</span>
+          <span className="text-[11px] font-mono text-accent-success font-bold">Connected</span>
         </div>
       </div>
     </aside>

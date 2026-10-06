@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    background-color: #080C14;
-    color: #F8FAFC;
+    background-color: #F8FAFC;
+    color: #0F172A;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
@@ -13,24 +13,25 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
     letter-spacing: -0.02em;
+    color: #0F172A;
   }
 }
 
-/* Custom crisp technical scrollbars */
+/* Custom crisp light theme scrollbars */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080C14;
+  background: #F8FAFC;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #243048;
-  border-radius: 2px;
+  background: #CBD5E1;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3E5075;
+  background: #94A3B8;
 }

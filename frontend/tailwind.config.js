@@ -8,36 +8,38 @@ export default {
     extend: {
       colors: {
         bg: {
-          dark: '#080C14',
-          surface: '#0F1522',
-          elevated: '#161E30',
-          card: '#1A2438',
+          dark: '#F8FAFC',       // Main page background (Slate 50)
+          surface: '#FFFFFF',    // Main card / container background (Pure White)
+          elevated: '#F1F5F9',   // Hover state / secondary container (Slate 100)
+          card: '#FFFFFF',       // Card panels
+          inverse: '#0F172A',    // Dark inverse container when needed
         },
         border: {
-          dark: '#243048',
-          subtle: '#2D3C5A',
-          hover: '#3E5075',
+          dark: '#E2E8F0',       // Main structural border (Slate 200)
+          subtle: '#CBD5E1',     // Accent border (Slate 300)
+          hover: '#94A3B8',      // Hover border (Slate 400)
         },
         primary: {
-          DEFAULT: '#10B981',
-          hover: '#059669',
-          light: '#34D399',
-          muted: 'rgba(16, 185, 129, 0.12)',
+          DEFAULT: '#4F46E5',    // Deep Royal Indigo
+          hover: '#4338CA',
+          light: '#6366F1',
+          muted: 'rgba(79, 70, 229, 0.08)',
         },
         secondary: {
-          DEFAULT: '#3B82F6',
-          muted: 'rgba(59, 130, 246, 0.12)',
+          DEFAULT: '#0284C7',    // Sky Cobalt
+          muted: 'rgba(2, 132, 199, 0.08)',
         },
         accent: {
-          success: '#10B981',
-          warning: '#F59E0B',
-          danger: '#EF4444',
-          purple: '#8B5CF6',
+          success: '#059669',    // Emerald Green
+          warning: '#D97706',    // Warm Amber
+          danger: '#DC2626',     // Crimson Red
+          purple: '#7C3AED',     // Deep Violet
         },
         txt: {
-          primary: '#F8FAFC',
-          secondary: '#94A3B8',
-          muted: '#64748B',
+          primary: '#0F172A',    // Main text (Slate 900)
+          secondary: '#475569',  // Subtext (Slate 600)
+          muted: '#64748B',      // Muted caption (Slate 500)
+          inverse: '#F8FAFC',    // Text on dark surfaces
         },
       },
       fontFamily: {

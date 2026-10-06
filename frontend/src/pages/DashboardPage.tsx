@@ -107,15 +107,15 @@ export const DashboardPage: React.FC = () => {
           {/* Left Column (2 cols): Technology Exposure & Languages */}
           <div className="lg:col-span-2 space-y-8">
             {/* Technology Exposure Horizontal Bars */}
-            <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
+            <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-base font-semibold text-txt-primary">Technology Exposure</h3>
+                  <h3 className="text-base font-bold text-txt-primary font-display">Technology Exposure</h3>
                   <p className="text-xs text-txt-muted">Detected languages, frameworks, databases, and DevOps tools</p>
                 </div>
                 <button
                   onClick={() => navigate('/skills')}
-                  className="text-xs text-primary-light hover:text-primary font-medium flex items-center gap-1"
+                  className="text-xs text-primary hover:underline font-bold flex items-center gap-1 font-mono"
                 >
                   View All Skills <ArrowRight className="w-3.5 h-3.5" />
                 </button>
@@ -126,17 +126,17 @@ export const DashboardPage: React.FC = () => {
                   <div key={tech.name}>
                     <div className="flex items-center justify-between text-xs mb-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold text-txt-primary">{tech.name}</span>
-                        <span className="text-[11px] font-mono px-2 py-0.2 rounded bg-bg-dark text-txt-muted border border-border-dark">
+                        <span className="font-bold text-txt-primary">{tech.name}</span>
+                        <span className="text-[11px] font-mono font-medium px-2 py-0.2 rounded bg-bg-elevated text-txt-secondary border border-border-dark">
                           {tech.category}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3 text-txt-muted text-[11px]">
+                      <div className="flex items-center gap-3 text-txt-muted text-[11px] font-mono">
                         <span>{tech.repoCount} repos</span>
-                        <span className="font-mono font-medium text-txt-secondary">{tech.usagePercentage}%</span>
+                        <span className="font-bold text-txt-primary">{tech.usagePercentage}%</span>
                       </div>
                     </div>
-                    <div className="w-full bg-bg-dark h-2 rounded-full overflow-hidden border border-border-dark/60">
+                    <div className="w-full bg-bg-elevated h-2 rounded-full overflow-hidden border border-border-dark">
                       <div
                         className="h-full rounded-full transition-all duration-500"
                         style={{ width: `${tech.usagePercentage}%`, backgroundColor: tech.color }}
@@ -152,24 +152,24 @@ export const DashboardPage: React.FC = () => {
               <LanguageDonutChart languages={data.languages} />
 
               {/* Collaboration Activity Summary */}
-              <div className="bg-bg-surface border border-border-dark rounded-xl p-6 flex flex-col justify-between">
+              <div className="bg-white border border-border-dark rounded-xl p-6 flex flex-col justify-between shadow-xs">
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-base font-semibold text-txt-primary">Collaboration Overview</h3>
+                    <h3 className="text-base font-bold text-txt-primary font-display">Collaboration Overview</h3>
                     <Users className="w-4 h-4 text-secondary" />
                   </div>
-                  <div className="space-y-3 mb-4 text-xs">
-                    <div className="flex items-center justify-between p-2.5 rounded-lg bg-bg-dark border border-border-dark">
+                  <div className="space-y-3 mb-4 text-xs font-medium">
+                    <div className="flex items-center justify-between p-2.5 rounded-lg bg-bg-elevated border border-border-dark">
                       <span className="text-txt-secondary">Pull Requests Merged</span>
                       <span className="font-mono font-bold text-txt-primary">{data.collaboration.pullRequests}</span>
                     </div>
-                    <div className="flex items-center justify-between p-2.5 rounded-lg bg-bg-dark border border-border-dark">
+                    <div className="flex items-center justify-between p-2.5 rounded-lg bg-bg-elevated border border-border-dark">
                       <span className="text-txt-secondary">Issues Opened / Resolved</span>
                       <span className="font-mono font-bold text-txt-primary">
                         {data.collaboration.issuesOpened} / {data.collaboration.issuesResolved}
                       </span>
                     </div>
-                    <div className="flex items-center justify-between p-2.5 rounded-lg bg-bg-dark border border-border-dark">
+                    <div className="flex items-center justify-between p-2.5 rounded-lg bg-bg-elevated border border-border-dark">
                       <span className="text-txt-secondary">External Repository PRs</span>
                       <span className="font-mono font-bold text-accent-success">{data.collaboration.externalPRs}</span>
                     </div>
@@ -177,7 +177,7 @@ export const DashboardPage: React.FC = () => {
                 </div>
 
                 {/* Network-style visual representation */}
-                <div className="bg-bg-dark border border-border-dark p-3 rounded-xl text-[11px] font-mono text-txt-muted">
+                <div className="bg-bg-elevated border border-border-dark p-3 rounded-xl text-[11px] font-mono text-txt-secondary">
                   <span className="text-primary font-bold">@alexjohnson</span>
                   <div className="pl-3 border-l border-border-dark mt-1 space-y-0.5">
                     <div>├── SmartAisle (@sarah-m, @dave-k)</div>
@@ -193,12 +193,12 @@ export const DashboardPage: React.FC = () => {
             <RolePredictionCard data={data.rolePrediction} />
 
             {/* Featured Repos Preview */}
-            <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
+            <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-base font-semibold text-txt-primary">Featured Repositories</h3>
+                <h3 className="text-base font-bold text-txt-primary font-display">Featured Repositories</h3>
                 <button
                   onClick={() => navigate('/repositories')}
-                  className="text-xs text-primary-light hover:text-primary font-medium flex items-center gap-1"
+                  className="text-xs text-primary hover:underline font-bold flex items-center gap-1 font-mono"
                 >
                   View All ({data.repositories.length}) <ArrowRight className="w-3.5 h-3.5" />
                 </button>

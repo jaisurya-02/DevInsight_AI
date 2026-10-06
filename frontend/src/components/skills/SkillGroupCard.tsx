@@ -14,10 +14,10 @@ export const SkillGroupCard: React.FC<SkillGroupCardProps> = ({ group }) => {
   } as const;
 
   return (
-    <div className="bg-bg-surface border border-border-dark rounded-xl p-5 hover:border-border-hover transition-all">
+    <div className="bg-white border border-border-dark rounded-xl p-5 hover:border-border-hover transition-all shadow-xs">
       <h3 className="text-base font-bold text-txt-primary font-display mb-4 pb-2 border-b border-border-dark flex items-center justify-between">
         <span>{group.category}</span>
-        <span className="text-xs font-mono font-normal text-txt-muted">{group.skills.length} Observed</span>
+        <span className="text-xs font-mono font-bold text-txt-muted">{group.skills.length} Observed</span>
       </h3>
 
       <div className="space-y-4">
@@ -26,7 +26,7 @@ export const SkillGroupCard: React.FC<SkillGroupCardProps> = ({ group }) => {
             <div className="flex items-center justify-between text-xs mb-1.5">
               <span className="font-bold text-txt-primary">{skill.name}</span>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-mono text-txt-muted">{skill.repoCount} repos</span>
+                <span className="text-[11px] font-mono text-txt-muted font-medium">{skill.repoCount} repos</span>
                 <Badge variant={statusVariant[skill.status]} size="sm">
                   {skill.status}
                 </Badge>
@@ -34,7 +34,7 @@ export const SkillGroupCard: React.FC<SkillGroupCardProps> = ({ group }) => {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex-1 bg-bg-dark h-2 rounded-full overflow-hidden border border-border-dark">
+              <div className="flex-1 bg-bg-elevated h-2 rounded-full overflow-hidden border border-border-dark">
                 <div
                   className="bg-primary h-full rounded-full transition-all duration-500"
                   style={{ width: `${skill.exposureLevel}%` }}

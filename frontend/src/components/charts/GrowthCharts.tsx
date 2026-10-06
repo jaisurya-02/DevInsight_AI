@@ -21,7 +21,7 @@ export const GrowthCharts: React.FC<GrowthChartsProps> = ({ growth }) => {
   return (
     <div className="space-y-6">
       {/* Repo Creation Growth */}
-      <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
+      <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
         <div className="mb-4">
           <h3 className="text-base font-bold text-txt-primary font-display">Repository Growth Trajectory</h3>
           <p className="text-xs text-txt-muted">Cumulative public repositories created over time</p>
@@ -29,24 +29,25 @@ export const GrowthCharts: React.FC<GrowthChartsProps> = ({ growth }) => {
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={growth.repoTimeline}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243048" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
               <XAxis dataKey="year" stroke="#64748B" fontSize={12} tickLine={false} fontFamily="JetBrains Mono" />
               <YAxis stroke="#64748B" fontSize={12} tickLine={false} fontFamily="JetBrains Mono" />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#0F1522',
-                  borderColor: '#243048',
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#CBD5E1',
                   borderRadius: '8px',
-                  color: '#F8FAFC',
+                  color: '#0F172A',
+                  boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
                 }}
               />
               <Line
                 type="monotone"
                 dataKey="count"
                 name="Total Repositories"
-                stroke="#10B981"
+                stroke="#4F46E5"
                 strokeWidth={3}
-                dot={{ fill: '#10B981', r: 4 }}
+                dot={{ fill: '#4F46E5', r: 4 }}
                 activeDot={{ r: 6 }}
               />
             </LineChart>
@@ -55,7 +56,7 @@ export const GrowthCharts: React.FC<GrowthChartsProps> = ({ growth }) => {
       </div>
 
       {/* Collaboration Trend Chart */}
-      <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
+      <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
         <div className="mb-4">
           <h3 className="text-base font-bold text-txt-primary font-display">Collaboration Activity Trend</h3>
           <p className="text-xs text-txt-muted">Pull requests, issues, and external open-source contributions</p>
@@ -63,21 +64,22 @@ export const GrowthCharts: React.FC<GrowthChartsProps> = ({ growth }) => {
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={growth.collaborationTrend}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#243048" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
               <XAxis dataKey="period" stroke="#64748B" fontSize={12} tickLine={false} fontFamily="JetBrains Mono" />
               <YAxis stroke="#64748B" fontSize={12} tickLine={false} fontFamily="JetBrains Mono" />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#0F1522',
-                  borderColor: '#243048',
+                  backgroundColor: '#FFFFFF',
+                  borderColor: '#CBD5E1',
                   borderRadius: '8px',
-                  color: '#F8FAFC',
+                  color: '#0F172A',
+                  boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
                 }}
               />
               <Legend wrapperStyle={{ paddingTop: '10px', fontSize: '12px' }} />
-              <Bar dataKey="prs" name="Pull Requests" fill="#10B981" radius={[2, 2, 0, 0]} />
-              <Bar dataKey="issues" name="Issues Opened" fill="#3B82F6" radius={[2, 2, 0, 0]} />
-              <Bar dataKey="external" name="External Contributions" fill="#F59E0B" radius={[2, 2, 0, 0]} />
+              <Bar dataKey="prs" name="Pull Requests" fill="#4F46E5" radius={[2, 2, 0, 0]} />
+              <Bar dataKey="issues" name="Issues Opened" fill="#0284C7" radius={[2, 2, 0, 0]} />
+              <Bar dataKey="external" name="External Contributions" fill="#059669" radius={[2, 2, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
