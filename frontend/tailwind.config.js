@@ -8,31 +8,31 @@ export default {
     extend: {
       colors: {
         bg: {
-          dark: '#070B14',
-          surface: '#0D1320',
-          elevated: '#111827',
-          card: '#161F32',
+          dark: '#080C14',
+          surface: '#0F1522',
+          elevated: '#161E30',
+          card: '#1A2438',
         },
         border: {
-          dark: '#1F2937',
-          subtle: '#2B3548',
-          hover: '#374151',
+          dark: '#243048',
+          subtle: '#2D3C5A',
+          hover: '#3E5075',
         },
         primary: {
-          DEFAULT: '#6366F1',
-          hover: '#4F46E5',
-          light: '#818CF8',
-          muted: 'rgba(99, 102, 241, 0.15)',
+          DEFAULT: '#10B981',
+          hover: '#059669',
+          light: '#34D399',
+          muted: 'rgba(16, 185, 129, 0.12)',
         },
         secondary: {
-          DEFAULT: '#22D3EE',
-          muted: 'rgba(34, 211, 238, 0.15)',
+          DEFAULT: '#3B82F6',
+          muted: 'rgba(59, 130, 246, 0.12)',
         },
         accent: {
-          success: '#22C55E',
+          success: '#10B981',
           warning: '#F59E0B',
           danger: '#EF4444',
-          purple: '#A855F7',
+          purple: '#8B5CF6',
         },
         txt: {
           primary: '#F8FAFC',
@@ -41,8 +41,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
     },
   },

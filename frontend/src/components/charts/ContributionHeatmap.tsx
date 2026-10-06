@@ -19,11 +19,11 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
   });
 
   const levelColorMap: Record<number, string> = {
-    0: 'bg-[#0D1320] border border-[#1F2937]/60',
-    1: 'bg-[#1E1B4B] border border-[#312E81]',
-    2: 'bg-[#3730A3] border border-[#4338CA]',
-    3: 'bg-[#4F46E5] border border-[#6366F1]',
-    4: 'bg-[#818CF8] border border-[#A5B4FC]',
+    0: 'bg-[#161E30] border border-[#243048]',
+    1: 'bg-[#064E3B] border border-[#047857]',
+    2: 'bg-[#047857] border border-[#10B981]',
+    3: 'bg-[#10B981] border border-[#34D399]',
+    4: 'bg-[#34D399] border border-[#A7F3D0]',
   };
 
   const totalContributions = days.reduce((acc, d) => acc + d.count, 0);
@@ -32,12 +32,12 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
     <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-semibold text-txt-primary">GitHub Contribution Activity</h3>
+          <h3 className="text-base font-bold text-txt-primary font-display">GitHub Contribution Activity</h3>
           <p className="text-xs text-txt-muted">
             {totalContributions.toLocaleString()} contributions in the last year
           </p>
         </div>
-        <div className="text-xs font-mono text-txt-muted bg-bg-dark border border-border-dark px-3 py-1 rounded-md">
+        <div className="text-xs font-mono text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-md font-semibold">
           {days.filter((d) => d.count > 0).length} active days
         </div>
       </div>
@@ -62,7 +62,7 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
       {/* Heatmap Legend */}
       <div className="flex items-center justify-between mt-4 pt-4 border-t border-border-dark text-xs text-txt-muted">
         <span>Observed Activity Calendar</span>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 font-mono text-[11px]">
           <span>Less</span>
           <div className="flex items-center gap-1">
             {[0, 1, 2, 3, 4].map((level) => (

@@ -28,12 +28,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
       <div>
         {/* Brand Header */}
         <div className="p-5 border-b border-border-dark flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center text-primary">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center text-primary">
             <Cpu className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-base font-bold text-txt-primary tracking-tight block">
-              DevInsight <span className="text-primary">AI</span>
+            <span className="text-base font-bold text-txt-primary font-display tracking-tight block">
+              DevInsight <span className="text-primary font-mono font-bold">AI</span>
             </span>
             <span className="text-[10px] text-txt-muted tracking-wider uppercase block font-mono">
               Developer Intelligence
@@ -48,10 +48,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all ${
+                `flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm transition-all ${
                   isActive
-                    ? 'bg-primary text-white shadow-md shadow-primary/20'
-                    : 'text-txt-secondary hover:text-txt-primary hover:bg-bg-elevated'
+                    ? 'bg-primary text-bg-dark font-bold shadow-sm'
+                    : 'text-txt-secondary font-medium hover:text-txt-primary hover:bg-bg-elevated'
                 }`
               }
             >
@@ -72,7 +72,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
               className="w-8 h-8 rounded-full border border-border-dark object-cover"
             />
             <div className="truncate">
-              <span className="text-xs font-semibold text-txt-primary block truncate">
+              <span className="text-xs font-bold text-txt-primary block truncate">
                 {profile.name}
               </span>
               <span className="text-[11px] text-txt-muted block truncate font-mono">
@@ -83,12 +83,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ profile }) => {
         )}
 
         {/* API Connection Indicator */}
-        <div className="flex items-center justify-between text-xs text-txt-muted bg-bg-dark/40 border border-border-dark px-3 py-2 rounded-lg">
+        <div className="flex items-center justify-between text-xs text-txt-muted bg-bg-dark border border-border-dark px-3 py-2 rounded-lg">
           <span className="flex items-center gap-1.5 font-mono text-[11px]">
-            <span className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
             GitHub API
           </span>
-          <span className="text-[11px] font-mono text-accent-success font-medium">Connected</span>
+          <span className="text-[11px] font-mono text-primary font-bold">Connected</span>
         </div>
       </div>
     </aside>

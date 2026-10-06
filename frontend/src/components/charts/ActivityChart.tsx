@@ -29,18 +29,18 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
     <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h3 className="text-base font-semibold text-txt-primary">Development Activity Overview</h3>
+          <h3 className="text-base font-bold text-txt-primary font-display">Development Activity Overview</h3>
           <p className="text-xs text-txt-muted">Monthly commits, pull requests, and open-source contributions</p>
         </div>
 
-        <div className="flex items-center gap-1 bg-bg-dark border border-border-dark p-1 rounded-lg self-start sm:self-auto">
+        <div className="flex items-center gap-1 bg-bg-dark border border-border-dark p-1 rounded-lg self-start sm:self-auto font-mono">
           {(['3M', '6M', '1Y', 'All'] as const).map((item) => (
             <button
               key={item}
               onClick={() => setFilter(item)}
-              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
+              className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
                 filter === item
-                  ? 'bg-primary text-white shadow-sm'
+                  ? 'bg-primary text-bg-dark shadow-sm'
                   : 'text-txt-muted hover:text-txt-primary hover:bg-bg-elevated'
               }`}
             >
@@ -53,33 +53,30 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
       <div className="h-64 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={filteredData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-            <defs>
-              <linearGradient id="activityGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#6366F1" stopOpacity={0.4} />
-                <stop offset="95%" stopColor="#6366F1" stopOpacity={0.0} />
-              </linearGradient>
-            </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1F2937" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#243048" vertical={false} />
             <XAxis
               dataKey="month"
               stroke="#64748B"
               fontSize={12}
               tickLine={false}
-              axisLine={{ stroke: '#1F2937' }}
+              axisLine={{ stroke: '#243048' }}
+              fontFamily="JetBrains Mono"
             />
             <YAxis
               stroke="#64748B"
               fontSize={12}
               tickLine={false}
               axisLine={false}
+              fontFamily="JetBrains Mono"
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#0D1320',
-                borderColor: '#1F2937',
+                backgroundColor: '#0F1522',
+                borderColor: '#243048',
                 borderRadius: '8px',
                 color: '#F8FAFC',
                 fontSize: '12px',
+                fontFamily: 'Plus Jakarta Sans',
               }}
               labelStyle={{ color: '#94A3B8', fontWeight: 600 }}
             />
@@ -87,10 +84,10 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
               type="monotone"
               dataKey="totalActivity"
               name="Total Activity"
-              stroke="#6366F1"
-              strokeWidth={2}
-              fillOpacity={1}
-              fill="url(#activityGradient)"
+              stroke="#10B981"
+              strokeWidth={2.5}
+              fill="#10B981"
+              fillOpacity={0.1}
             />
           </AreaChart>
         </ResponsiveContainer>
