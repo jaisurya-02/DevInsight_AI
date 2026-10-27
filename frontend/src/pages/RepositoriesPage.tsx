@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { RepoFilter } from '../components/repositories/RepoFilter';
 import { RepoCard } from '../components/repositories/RepoCard';
@@ -9,6 +10,8 @@ import { getDeveloperInsights } from '../services/api';
 import type { CompleteDeveloperInsights, Repository } from '../types/developer';
 
 export const RepositoriesPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const userParam = searchParams.get('user') || undefined;
   const [data, setData] = useState<CompleteDeveloperInsights | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,11 +20,12 @@ export const RepositoriesPage: React.FC = () => {
   const [selectedRepo, setSelectedRepo] = useState<Repository | null>(null);
 
   useEffect(() => {
-    getDeveloperInsights().then((res) => {
+    setLoading(true);
+    getDeveloperInsights(userParam).then((res) => {
       setData(res);
       setLoading(false);
     });
-  }, []);
+  }, [userParam]);
 
   if (loading || !data) {
     return (

@@ -8,38 +8,36 @@ export default {
     extend: {
       colors: {
         bg: {
-          dark: '#F6F8FA',       // Main page background (GitHub Light Slate)
-          surface: '#FFFFFF',    // Main card / container background (Pure White)
-          elevated: '#F3F4F6',   // Soft grey panel (Slate 100)
-          card: '#FFFFFF',       // Card panels
-          inverse: '#1F2328',    // Dark inverse container
+          dark: '#080C14',
+          surface: '#0F1522',
+          elevated: '#161E30',
+          card: '#1A2438',
         },
         border: {
-          dark: '#D0D7DE',       // Structural border (Clean Slate)
-          subtle: '#E5E7EB',     // Light divider
-          hover: '#0969DA',      // Active border hover
+          dark: '#243048',
+          subtle: '#2D3C5A',
+          hover: '#3E5075',
         },
         primary: {
-          DEFAULT: '#0969DA',    // Classic GitHub / Linear Royal Blue
-          hover: '#0353B4',
-          light: '#218BFF',
-          muted: 'rgba(9, 105, 218, 0.08)',
+          DEFAULT: '#10B981',
+          hover: '#059669',
+          light: '#34D399',
+          muted: 'rgba(16, 185, 129, 0.12)',
         },
         secondary: {
-          DEFAULT: '#0576B9',    // Deep Cobalt
-          muted: 'rgba(5, 118, 185, 0.08)',
+          DEFAULT: '#3B82F6',
+          muted: 'rgba(59, 130, 246, 0.12)',
         },
         accent: {
-          success: '#1F883D',    // Deep GitHub Emerald
-          warning: '#9A6700',    // Warm Amber
-          danger: '#CF222E',     // Crimson Red
-          purple: '#8250DF',     // Deep Purple
+          success: '#10B981',
+          warning: '#F59E0B',
+          danger: '#EF4444',
+          purple: '#8B5CF6',
         },
         txt: {
-          primary: '#1F2328',    // Main dark text (100% visible)
-          secondary: '#424A53',  // Subtext (100% visible)
-          muted: '#656D76',      // Caption text
-          inverse: '#FFFFFF',    // Text on dark buttons
+          primary: '#F8FAFC',
+          secondary: '#94A3B8',
+          muted: '#64748B',
         },
       },
       fontFamily: {

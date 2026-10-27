@@ -7,12 +7,14 @@ interface DashboardLayoutProps {
   children: React.ReactNode;
   profile?: DeveloperProfile;
   onRefresh?: () => void;
+  isRefreshing?: boolean;
 }
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   children,
   profile,
   onRefresh,
+  isRefreshing = false,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -24,13 +26,13 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       </div>
 
       {/* Mobile Drawer Header */}
-      <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-border-dark sticky top-0 z-30 shadow-xs">
-        <span className="font-bold text-base text-txt-primary font-display">
-          DevInsight <span className="text-primary font-mono">AI</span>
+      <div className="md:hidden flex items-center justify-between p-4 bg-bg-surface border-b border-border-dark sticky top-0 z-30">
+        <span className="font-bold text-base text-txt-primary">
+          DevInsight <span className="text-primary">AI</span>
         </span>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 text-txt-secondary hover:text-txt-primary rounded-lg bg-bg-dark border border-border-dark"
+          className="p-2 text-txt-muted hover:text-txt-primary rounded-lg bg-bg-dark border border-border-dark"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -38,8 +40,8 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-black/30 backdrop-blur-xs flex">
-          <div className="w-64 bg-white h-full shadow-2xl">
+        <div className="md:hidden fixed inset-0 z-40 bg-black/70 flex">
+          <div className="w-64 bg-bg-surface h-full">
             <Sidebar profile={profile} />
           </div>
           <div className="flex-1" onClick={() => setMobileMenuOpen(false)} />
@@ -50,43 +52,46 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       <main className="flex-1 flex flex-col min-w-0">
         {/* Top Header Banner for Dashboard Views */}
         {profile && (
-          <header className="bg-white border-b border-border-dark px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+          <header className="bg-bg-surface/50 border-b border-border-dark px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center gap-3.5">
               <img
                 src={profile.avatarUrl}
                 alt={profile.name}
-                className="w-11 h-11 rounded-xl border border-border-dark object-cover shadow-xs"
+                className="w-11 h-11 rounded-xl border border-border-dark object-cover shadow-sm"
               />
               <div>
                 <div className="flex items-center gap-2">
-                  <h1 className="text-lg font-bold text-txt-primary font-display">{profile.name}</h1>
-                  <span className="text-xs font-mono font-medium text-txt-muted">@{profile.username}</span>
+                  <h1 className="text-lg font-bold text-txt-primary">{profile.name}</h1>
+                  <span className="text-xs font-mono text-txt-muted">@{profile.username}</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-txt-secondary font-medium">
-                  <span className="font-bold text-primary">{profile.predictedRole}</span>
+                <div className="flex items-center gap-2 text-xs text-txt-secondary">
+                  <span className="font-semibold text-primary-light">{profile.predictedRole}</span>
                   <span className="text-txt-muted">• Analyzed from public GitHub activity</span>
                 </div>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-txt-primary bg-bg-dark border border-border-dark px-3 py-1.5 rounded-lg">
+              <div className="hidden sm:flex items-center gap-1.5 text-xs text-txt-muted bg-bg-dark border border-border-dark px-3 py-1.5 rounded-lg">
                 <Calendar className="w-3.5 h-3.5 text-primary" />
                 <span>Last analyzed: {profile.lastAnalyzed}</span>
               </div>
 
               <button
                 onClick={onRefresh}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-bg-dark hover:bg-bg-elevated border border-border-dark text-txt-primary text-xs font-bold rounded-lg transition-colors shadow-xs"
+                disabled={isRefreshing}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 bg-bg-elevated hover:bg-border-dark border border-border-dark text-txt-primary text-xs font-medium rounded-lg transition-colors ${
+                  isRefreshing ? 'opacity-60 cursor-not-allowed' : ''
+                }`}
                 title="Refresh Analysis"
               >
-                <RefreshCw className="w-3.5 h-3.5 text-primary" />
-                <span>Refresh</span>
+                <RefreshCw className={`w-3.5 h-3.5 text-primary-light ${isRefreshing ? 'animate-spin' : ''}`} />
+                <span>{isRefreshing ? 'Refreshing...' : 'Refresh'}</span>
               </button>
 
               <button
                 onClick={() => alert('Report link copied to clipboard!')}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary text-xs font-bold rounded-lg transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary-light text-xs font-medium rounded-lg transition-colors"
               >
                 <Share2 className="w-3.5 h-3.5" />
                 <span>Share Report</span>

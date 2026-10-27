@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { GrowthCharts } from '../components/charts/GrowthCharts';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
@@ -6,15 +7,18 @@ import { getDeveloperInsights } from '../services/api';
 import type { CompleteDeveloperInsights } from '../types/developer';
 
 export const GrowthPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const userParam = searchParams.get('user') || undefined;
   const [data, setData] = useState<CompleteDeveloperInsights | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getDeveloperInsights().then((res) => {
+    setLoading(true);
+    getDeveloperInsights(userParam).then((res) => {
       setData(res);
       setLoading(false);
     });
-  }, []);
+  }, [userParam]);
 
   if (loading || !data) {
     return (
@@ -28,7 +32,7 @@ export const GrowthPage: React.FC = () => {
     <DashboardLayout profile={data.profile}>
       <div className="space-y-8">
         <div>
-          <h2 className="text-xl font-bold text-txt-primary tracking-tight font-display">
+          <h2 className="text-xl font-bold text-txt-primary tracking-tight">
             Developer Growth Analytics
           </h2>
           <p className="text-xs text-txt-muted">
@@ -37,9 +41,9 @@ export const GrowthPage: React.FC = () => {
         </div>
 
         {/* Technology Evolution Timeline */}
-        <section className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
+        <section className="bg-bg-surface border border-border-dark rounded-xl p-6">
           <div className="mb-6">
-            <h3 className="text-base font-bold text-txt-primary font-display">Technology Adoption Evolution</h3>
+            <h3 className="text-base font-semibold text-txt-primary">Technology Adoption Evolution</h3>
             <p className="text-xs text-txt-muted">Historical progression of programming languages and frameworks</p>
           </div>
 
@@ -47,11 +51,11 @@ export const GrowthPage: React.FC = () => {
             {data.growth.techEvolution.map((item, idx) => (
               <div
                 key={item.year}
-                className="bg-bg-elevated border border-border-dark p-5 rounded-xl relative overflow-hidden group hover:border-primary transition-all"
+                className="bg-bg-dark border border-border-dark p-5 rounded-xl relative overflow-hidden group hover:border-primary/40 transition-all"
               >
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-lg font-bold font-mono text-primary">{item.year}</span>
-                  <span className="text-[10px] font-mono text-txt-muted font-bold uppercase bg-white border border-border-dark px-2 py-0.5 rounded">
+                  <span className="text-lg font-bold font-mono text-primary-light">{item.year}</span>
+                  <span className="text-[10px] font-mono text-txt-muted uppercase bg-bg-elevated px-2 py-0.5 rounded">
                     Phase 0{idx + 1}
                   </span>
                 </div>
@@ -60,7 +64,7 @@ export const GrowthPage: React.FC = () => {
                   {item.technologies.map((t) => (
                     <span
                       key={t}
-                      className="text-xs font-semibold px-2.5 py-1 rounded-md bg-white text-txt-primary border border-border-dark shadow-xs"
+                      className="text-xs font-medium px-2.5 py-1 rounded-md bg-bg-elevated text-txt-primary border border-border-dark"
                     >
                       {t}
                     </span>

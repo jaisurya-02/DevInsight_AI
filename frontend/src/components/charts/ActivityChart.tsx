@@ -26,11 +26,11 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
   const filteredData = getFilteredData();
 
   return (
-    <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
+    <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h3 className="text-base font-bold text-[#1F2328] font-display">Development Activity Overview</h3>
-          <p className="text-xs font-medium text-txt-secondary mt-0.5">Monthly commits, pull requests, and open-source contributions</p>
+          <h3 className="text-base font-bold text-txt-primary font-display">Development Activity Overview</h3>
+          <p className="text-xs text-txt-muted">Monthly commits, pull requests, and open-source contributions</p>
         </div>
 
         <div className="flex items-center gap-1 bg-bg-dark border border-border-dark p-1 rounded-lg self-start sm:self-auto font-mono">
@@ -38,10 +38,10 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
             <button
               key={item}
               onClick={() => setFilter(item)}
-              className={`px-3 py-1 text-xs font-bold rounded-md transition-colors ${
+              className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors ${
                 filter === item
-                  ? 'bg-primary text-white shadow-xs'
-                  : 'text-txt-secondary hover:text-txt-primary hover:bg-white'
+                  ? 'bg-primary text-bg-dark shadow-sm'
+                  : 'text-txt-muted hover:text-txt-primary hover:bg-bg-elevated'
               }`}
             >
               {item}
@@ -53,17 +53,17 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
       <div className="h-64 w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={filteredData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#243048" vertical={false} />
             <XAxis
               dataKey="month"
-              stroke="#57606A"
+              stroke="#64748B"
               fontSize={12}
               tickLine={false}
-              axisLine={{ stroke: '#E5E7EB' }}
+              axisLine={{ stroke: '#243048' }}
               fontFamily="JetBrains Mono"
             />
             <YAxis
-              stroke="#57606A"
+              stroke="#64748B"
               fontSize={12}
               tickLine={false}
               axisLine={false}
@@ -71,30 +71,29 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ data }) => {
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#FFFFFF',
-                borderColor: '#D0D7DE',
+                backgroundColor: '#0F1522',
+                borderColor: '#243048',
                 borderRadius: '8px',
-                color: '#1F2328',
+                color: '#F8FAFC',
                 fontSize: '12px',
                 fontFamily: 'Plus Jakarta Sans',
-                boxShadow: '0 4px 12px rgba(31,35,40,0.12)',
               }}
-              labelStyle={{ color: '#1F2328', fontWeight: 700 }}
+              labelStyle={{ color: '#94A3B8', fontWeight: 600 }}
             />
             <Area
               type="monotone"
               dataKey="totalActivity"
               name="Total Activity"
-              stroke="#0969DA"
+              stroke="#10B981"
               strokeWidth={2.5}
-              fill="#0969DA"
-              fillOpacity={0.08}
+              fill="#10B981"
+              fillOpacity={0.1}
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-border-dark text-xs text-txt-secondary font-semibold">
+      <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-border-dark text-xs text-txt-muted">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-primary"></span>
           <span>Commits & PRs</span>

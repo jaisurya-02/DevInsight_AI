@@ -6,6 +6,7 @@ interface ContributionHeatmapProps {
 }
 
 export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }) => {
+  // Group days into columns of 7 days (weeks)
   const weeks: HeatmapDay[][] = [];
   let currentWeek: HeatmapDay[] = [];
 
@@ -18,25 +19,25 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
   });
 
   const levelColorMap: Record<number, string> = {
-    0: 'bg-[#EBEDF0] border border-[#D0D7DE]',
-    1: 'bg-[#9BE9A8] border border-[#40C463]',
-    2: 'bg-[#40C463] border border-[#30A14E]',
-    3: 'bg-[#30A14E] border border-[#216E39]',
-    4: 'bg-[#216E39] border border-[#144622]',
+    0: 'bg-[#161E30] border border-[#243048]',
+    1: 'bg-[#064E3B] border border-[#047857]',
+    2: 'bg-[#047857] border border-[#10B981]',
+    3: 'bg-[#10B981] border border-[#34D399]',
+    4: 'bg-[#34D399] border border-[#A7F3D0]',
   };
 
   const totalContributions = days.reduce((acc, d) => acc + d.count, 0);
 
   return (
-    <div className="bg-white border border-border-dark rounded-xl p-6 shadow-xs">
+    <div className="bg-bg-surface border border-border-dark rounded-xl p-6">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-base font-bold text-[#1F2328] font-display">GitHub Contribution Activity</h3>
-          <p className="text-xs font-medium text-txt-secondary mt-0.5">
+          <h3 className="text-base font-bold text-txt-primary font-display">GitHub Contribution Activity</h3>
+          <p className="text-xs text-txt-muted">
             {totalContributions.toLocaleString()} contributions in the last year
           </p>
         </div>
-        <div className="text-xs font-mono text-accent-success bg-accent-success/10 border border-accent-success/20 px-3 py-1 rounded-md font-bold">
+        <div className="text-xs font-mono text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-md font-semibold">
           {days.filter((d) => d.count > 0).length} active days
         </div>
       </div>
@@ -59,7 +60,7 @@ export const ContributionHeatmap: React.FC<ContributionHeatmapProps> = ({ days }
       </div>
 
       {/* Heatmap Legend */}
-      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border-dark text-xs text-txt-secondary font-medium">
+      <div className="flex items-center justify-between mt-4 pt-4 border-t border-border-dark text-xs text-txt-muted">
         <span>Observed Activity Calendar</span>
         <div className="flex items-center gap-2 font-mono text-[11px]">
           <span>Less</span>

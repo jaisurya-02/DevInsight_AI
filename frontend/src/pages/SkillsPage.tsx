@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { SkillGroupCard } from '../components/skills/SkillGroupCard';
 import { SkillGapCard } from '../components/skills/SkillGapCard';
@@ -8,15 +9,18 @@ import { getDeveloperInsights } from '../services/api';
 import type { CompleteDeveloperInsights } from '../types/developer';
 
 export const SkillsPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const userParam = searchParams.get('user') || undefined;
   const [data, setData] = useState<CompleteDeveloperInsights | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getDeveloperInsights().then((res) => {
+    setLoading(true);
+    getDeveloperInsights(userParam).then((res) => {
       setData(res);
       setLoading(false);
     });
-  }, []);
+  }, [userParam]);
 
   if (loading || !data) {
     return (
